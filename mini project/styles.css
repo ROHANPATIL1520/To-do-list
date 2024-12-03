@@ -1,0 +1,154 @@
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background: url("https://media.istockphoto.com/id/1185817325/photo/checklist.jpg?s=612x612&w=0&k=20&c=4INqA2taiyBs52WTvKFSwEpoZCQAHDj4Ij9SzSlV2AI=")
+    no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+/* Add blurred effect behind the content */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  filter: blur(8px); /* Adjust the blur level */
+  z-index: -1;
+}
+
+/* Container style */
+.container {
+  background: rgba(255, 255, 255, 0.8); /* Slight opacity for readability */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+body.loaded .container {
+  opacity: 1;
+  transform: scale(1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2em;
+}
+
+/* Task controls and footer */
+.task-controls,
+.task-footer {
+  margin-bottom: 10px;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Task items */
+li {
+  padding: 10px;
+  background: #f9f9f9;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateY(-20px); /* Animation start position */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+li.show {
+  opacity: 1;
+  transform: translateY(0); /* Animation end position */
+}
+
+li.completed {
+  text-decoration: line-through;
+  color: gray;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+li:hover {
+  background-color: #f1f1f1;
+  transform: scale(1.03);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+li button {
+  margin-left: 5px;
+  transition: transform 0.2s ease;
+}
+
+li button:hover {
+  transform: scale(1.1); /* Enlarge button on hover */
+}
+
+/* Task removal animation */
+li.remove {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Focus styles */
+input:focus,
+select:focus,
+button:focus {
+  outline: 2px solid #007bff;
+}
+
+/* Clear tasks button hover effect */
+#clear-tasks {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#clear-tasks:hover {
+  background-color: #c82333;
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  transition: transform 0.3s ease;
+}
